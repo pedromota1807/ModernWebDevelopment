@@ -15,9 +15,14 @@
               Categorias
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li *ngFor="let CAT of lista">
+                <a class="dropdown-item" href="#">{{ CAT.nome }}</a>
+              </li>
+              <!--
               <li><a class="dropdown-item" href="#">Categoria 1</a></li>
               <li><a class="dropdown-item" href="#">Categoria 2</a></li>
               <li><a class="dropdown-item" href="#">Categoria 3</a></li>
+              -->
             </ul>
           </li>
           <li class="nav-item">

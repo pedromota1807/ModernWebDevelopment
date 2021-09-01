@@ -18,7 +18,8 @@ public class MyWebApplicationSecurityConfig extends WebSecurityConfigurerAdapter
 							.authorizeRequests()
 							.antMatchers(HttpMethod.GET, "/produto").permitAll()
 							.antMatchers(HttpMethod.POST, "/login").permitAll()
-							.anyRequest().authenticated();
+							.anyRequest().permitAll();
+							//.anyRequest().authenticated();
 		
 		httpSecurity.addFilterBefore(new TokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
