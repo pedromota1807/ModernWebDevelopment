@@ -15,7 +15,7 @@ export class ProdutoService {
   }
 
   public getProdutoPeloId(idProduto: number){
-    return this.http.get("htto://localhost:8080/produto/"+idProduto);
+    return this.http.get("http://localhost:8080/produto/"+idProduto);
   }
 
 }

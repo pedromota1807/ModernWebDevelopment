@@ -1,0 +1,25 @@
+<div class=container>
+    <div class=row >
+        <div class="col-12 text-center">
+            <h3>Seu carrinho</h3>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="vazio == true">
+        <div class="col-12">
+            <h3>Seu carrinho está vazio</h3>
+        </div>
+    </div>
+
+    <div id="itens" *ngIf="vazio == false">
+        <div class="row">
+            <div class="col-12">
+                <h3> Valor Total R$ {{pedido.valorTotal | number: '1.2-2'}}</h3>
+            </div>
+        </div>
+        <div class="row" *ngFor="let ITEM of pedido.itens">
+
+        </div>
+    </div>
+
+</div>

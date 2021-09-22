@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ItemPedido } from 'src/app/model/ItemPedido';
+import { Pedido } from 'src/app/model/Pedido';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/servicos/produto.service';
 
@@ -11,9 +13,12 @@ import { ProdutoService } from 'src/app/servicos/produto.service';
 export class DetalhesComponent implements OnInit {
 
   public produtoDetalhe: Produto;
+  public quantidade: number;
 
-  constructor(private route: ActivatedRoute, private service: ProdutoService) {
-
+  constructor(private route: ActivatedRoute, 
+              private service: ProdutoService,
+              private nav: Router) {
+    this.quantidade = 1; 
    }
 
   ngOnInit(): void {
@@ -22,11 +27,38 @@ export class DetalhesComponent implements OnInit {
       this.recuperaProduto(parameter["idProduto"]);
     })
   }
+
   public recuperaProduto(idProduto: number){
     this.service.getProdutoPeloId(idProduto).subscribe(
      (prod: Produto) => {this.produtoDetalhe = prod;},
      erro => {alert("produto invalido")}
     );
+  }
+
+  public adicionarCarrinho(){
+    let pedido: Pedido;
+    pedido = JSON.parse(localStorage.getItem("LeetirCarrinho"));
+    if(!pedido){  // se não existir, será criado um pedido 
+      pedido = new Pedido();
+      pedido.valorTotal = 0;
+      pedido.itensPedido = [];
+    }
+    let item: ItemPedido;
+    item = new ItemPedido();
+    item.qtdeItem = this.quantidade;
+    item.produto = this.produtoDetalhe;
+    item.precoUnitario = this.produtoDetalhe.preco;
+    item.precoTotal = item.precoUnitario * item.qtdeItem;
+    pedido.itensPedido.push(item);
+
+    pedido.valorTotal = pedido.valorTotal + item.precoTotal; 
+
+    console.log(JSON.stringify(item))
+
+    localStorage.setItem("LeetirCarrinho", JSON.stringify(pedido));
+
+    this.nav.navigate(['carrinho']);
+
   }
 
 }

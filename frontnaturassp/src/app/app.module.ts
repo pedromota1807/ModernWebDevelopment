@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { RodapeComponent } from './componentes/rodape/rodape.component';
 import { DestaquesComponent } from './componentes/destaques/destaques.component';
 import { CarroselComponent } from './componentes/carrosel/carrosel.component';
 import { DetalhesComponent } from './componentes/detalhes/detalhes.component';
+import { CarrinhoComponent } from './componentes/carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,14 @@ import { DetalhesComponent } from './componentes/detalhes/detalhes.component';
     RodapeComponent,
     DestaquesComponent,
     CarroselComponent,
-    DetalhesComponent
+    DetalhesComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
