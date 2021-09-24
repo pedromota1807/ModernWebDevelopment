@@ -19,7 +19,23 @@ export class CarrinhoComponent implements OnInit {
     if(!this.pedido){
       this.vazio = true;
     }
-    
+    else{
+      this.vazio = false;
+      
+    }
+  }
+
+  public removerItem(idProduto: number){
+    let i: number;
+    for(i=0; i< this.pedido.itensPedido.length; i++){
+      if(this.pedido.itensPedido[i].produto.idProduto == idProduto){
+        alert("Removi produto: "+this.pedido.itensPedido[i].produto.nome);
+        this.pedido.valorTotal = this.pedido.itensPedido[i].precoTotal;
+        this.pedido.itensPedido.splice(i, 1);
+      }
+    }
+    localStorage.setItem("LeetirCarrinho", JSON.stringify(this.pedido));
+
   }
 
 }

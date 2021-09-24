@@ -43,18 +43,20 @@ export class DetalhesComponent implements OnInit {
       pedido.valorTotal = 0;
       pedido.itensPedido = [];
     }
+
     let item: ItemPedido;
     item = new ItemPedido();
     item.qtdeItem = this.quantidade;
     item.produto = this.produtoDetalhe;
     item.precoUnitario = this.produtoDetalhe.preco;
     item.precoTotal = item.precoUnitario * item.qtdeItem;
+    
     pedido.itensPedido.push(item);
+    console.log(JSON.stringify(item));
 
     pedido.valorTotal = pedido.valorTotal + item.precoTotal; 
 
-    console.log(JSON.stringify(item))
-
+    
     localStorage.setItem("LeetirCarrinho", JSON.stringify(pedido));
 
     this.nav.navigate(['carrinho']);
