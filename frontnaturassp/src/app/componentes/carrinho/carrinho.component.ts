@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pedido } from 'src/app/model/Pedido';
 
 @Component({
@@ -10,7 +11,7 @@ export class CarrinhoComponent implements OnInit {
 
   public pedido: Pedido;
   public vazio: boolean;
-  constructor() {
+  constructor(private route: Router) {
     
    }
 
@@ -30,12 +31,21 @@ export class CarrinhoComponent implements OnInit {
     for(i=0; i< this.pedido.itensPedido.length; i++){
       if(this.pedido.itensPedido[i].produto.idProduto == idProduto){
         alert("Removi produto: "+this.pedido.itensPedido[i].produto.nome);
-        this.pedido.valorTotal = this.pedido.itensPedido[i].precoTotal;
+        this.pedido.valorTotal -= this.pedido.itensPedido[i].precoTotal
         this.pedido.itensPedido.splice(i, 1);
       }
     }
     localStorage.setItem("LeetirCarrinho", JSON.stringify(this.pedido));
+  }  
 
+  public efetivar(){
+    if(this.pedido.itensPedido.length > 0){
+      this.route.navigate(['/efetivarpedido']);
+    }
+    else{
+      this.route.navigate(['/destaques']);
+    }
+    
   }
 
 }

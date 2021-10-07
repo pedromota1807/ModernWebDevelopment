@@ -20,6 +20,8 @@ public class Cliente {
 	private String email;
 	@Column(name = "telefone_cliente", length = 20, nullable = false, unique = false)
 	private String telefone;
+	@Column(name = "cpf_cliente", length = 15, nullable = false)
+	private String cpf;
 	@Column(name = "cep_cliente", length = 10, nullable = false)
 	private String cep;
 	@Column(name = "logradouro", length = 100)
@@ -34,6 +36,7 @@ public class Cliente {
 	private String cidade;
 	@Column(name = "estado", length = 2)
 	private String estado;
+	
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -57,6 +60,13 @@ public class Cliente {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	public String getCep() {
 		return cep;

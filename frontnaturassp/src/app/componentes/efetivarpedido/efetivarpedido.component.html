@@ -1,0 +1,113 @@
+<div class="modal" tabindex="-1" id="modalErroCpf">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Erro no CPF</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>CPF informado inválido.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <button id="btnModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalErroCpf"></button>
+    <div id="divBusca" class="row">
+        <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+            <div class="mb-3">
+                <label for="txtTelefone" class="form-label">Seu CPF</label>
+                <input type="text" class="form-control" id="txtCpf" [(ngModel)]="cliente.cpf">
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+            <button type="button" id="btnBuscar" (click)="buscarCpf()" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+    
+    <div id="divDetalhes" *ngIf="visivel">
+        <div class="row" *ngIf="achou == false">
+            <div class="col-12">
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <strong>Bem vinda(o)!</strong> Você é recente por aqui!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="txtNome" class="form-label">Seu Nome</label>
+            <input type="text" class="form-control" id="txtNome" [(ngModel)]="cliente.nome">
+        </div>
+        <div class="mb-3">
+            <label for="txtEmail" class="form-label">Seu E-mail</label>
+            <input type="text" class="form-control" id="txtEmail" [(ngModel)]="cliente.email">
+        </div>
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+                <div class="mb-3">
+                    <label for="txtCep" class="form-label">CEP da sua residência</label>
+                    <input type="text" class="form-control" id="txtCep" [(ngModel)]="cliente.cep">
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                <button type="button" id="btnCep" (click)="buscarCpf()" class="btn btn-primary">Buscar CEP</button>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="txtLogradouro" class="form-label">Logradouro</label>
+            <input type="text" class="form-control" id="txtLogradouro" [(ngModel)]="cliente.logradouro">
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="txtNumero" class="form-label">Número</label>
+                    <input type="text" class="form-control" id="txtNumero" [(ngModel)]="cliente.numero">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="txtComplemento" class="form-label">Complemento</label>
+                    <input type="text" class="form-control" id="txtComplemento" [(ngModel)]="cliente.complemento">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="mb-3">
+                        <label for="txtBairro" class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="txtBairro" [(ngModel)]="cliente.bairro">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="mb-3">
+                        <label for="txtCidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="txtCidade" [(ngModel)]="cliente.cidade">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="mb-3">
+                        <label for="txtEstado" class="form-label">UF</label>
+                        <input type="text" class="form-control" id="txtEstado" [(ngModel)]="cliente.estado">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="txtObservacao" class="form-label">Observações do seu pedido</label>
+                    <input type="text" class="form-control" [(ngModel)]="pedido.observacoes" id="txtObservacao" placeholder="Informe se você tem preferência de horário ou alguma outra restrição na entrega.">
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="button" id="btnFinalizar" class="btn btn-primary" (click)="finalizarPedido()">Finalizar Pedido</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
