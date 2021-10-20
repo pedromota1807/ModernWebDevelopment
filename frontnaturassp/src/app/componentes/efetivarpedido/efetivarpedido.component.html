@@ -2,11 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Erro no CPF</h5>
+                <h5 class="modal-title">Erro no Formulário</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>CPF informado inválido.</p>
+                <p>{{ mensagemErro }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -21,7 +21,7 @@
     <div id="divBusca" class="row">
         <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10 col-xl-10">
             <div class="mb-3">
-                <label for="txtTelefone" class="form-label">Seu CPF</label>
+                <label for="txtCpf" class="form-label">Seu CPF</label>
                 <input type="text" class="form-control" id="txtCpf" [(ngModel)]="cliente.cpf">
             </div>
         </div>
@@ -33,9 +33,9 @@
     <div id="divDetalhes" *ngIf="visivel">
         <div class="row" *ngIf="achou == false">
             <div class="col-12">
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <div class="alert alert-primary fade show" role="alert">
                     <strong>Bem vinda(o)!</strong> Você é recente por aqui!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close" (click)="ocultaAlert()" aria-label="Close"></button>
                 </div>
             </div>
         </div>
@@ -47,6 +47,10 @@
             <label for="txtEmail" class="form-label">Seu E-mail</label>
             <input type="text" class="form-control" id="txtEmail" [(ngModel)]="cliente.email">
         </div>
+        <div class="mb-3">
+            <label for="txtTelefone" class="form-label">Seu WhatsApp</label>
+            <input type="text" class="form-control" id="txtTelefone" [(ngModel)]="cliente.telefone">
+        </div>
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10 col-xl-10">
                 <div class="mb-3">
@@ -55,7 +59,7 @@
                 </div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <button type="button" id="btnCep" (click)="buscarCpf()" class="btn btn-primary">Buscar CEP</button>
+                <button type="button" id="btnCep" (click)="buscarCep()" class="btn btn-primary">Buscar CEP</button>
             </div>
         </div>
 

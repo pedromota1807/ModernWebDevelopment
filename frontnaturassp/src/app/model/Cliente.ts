@@ -1,3 +1,5 @@
+import { resetFakeAsyncZone } from "@angular/core/testing";
+
 export class Cliente{
     public idCliente: number;
     public nome: string;
@@ -11,4 +13,19 @@ export class Cliente{
     public bairro: string;
     public cidade: string;
     public estado: string;
+
+
+    public reset(): void{
+        this.nome = "";
+        this.bairro = "";
+        this.cep = "";
+        this.cidade = "";
+        this.email = "";
+        this.telefone = "";
+        this.estado = "";
+        this.numero = "";
+        this.bairro = "";
+        this.logradouro = "";
+    }
+
 }

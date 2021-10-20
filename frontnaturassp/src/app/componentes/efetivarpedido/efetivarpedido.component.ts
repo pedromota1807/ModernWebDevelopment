@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/model/Cliente';
+import { EnderecoCep } from 'src/app/model/EnderecoCep';
 import { Pedido } from 'src/app/model/Pedido';
+import { BuscarcepService } from 'src/app/servicos/buscarcep.service';
 import { ClienteService } from 'src/app/servicos/cliente.service';
 import { PedidoService } from 'src/app/servicos/pedido.service';
 
@@ -15,9 +17,11 @@ export class EfetivarpedidoComponent implements OnInit {
   public achou: boolean;
   public visivel: boolean;
   public pedido: Pedido;
+  public mensagemErro: string;
 
 constructor(private cliService: ClienteService, 
             private pedService: PedidoService,
+            private cepService: BuscarcepService,
             private router: Router) { 
     this.cliente = new Cliente();
     this.pedido = new Pedido();
@@ -78,6 +82,7 @@ constructor(private cliService: ClienteService,
 
  public buscarCpf(){
     if(!this.isCpfValid()){
+      this.mensagemErro = "CPF informado é invalido."
       document.getElementById("btnModal").click();
       return;
     }
@@ -92,11 +97,33 @@ constructor(private cliService: ClienteService,
         if(err.status == 404){
           //deu certo, mas a pesquisa não encontrou o cliente com esse telefone - é novo cliente
           this.visivel = true;
+          this.cliente.reset();
         }
         else{
           alert("Erro desconhecido: "+err);
         }
       })
+  }
+
+  public ocultaAlert(){
+    this.achou = true;
+  }
+
+  public buscarCep(){
+    this.cepService.buscarCep(this.cliente.cep).subscribe
+      ((res: EnderecoCep) => {
+        this.cliente.logradouro = res.logradouro;
+        this.cliente.cidade = res.localidade;
+        this.cliente.bairro = res.bairro;
+        this.cliente.estado = res.uf
+      },
+      (err) => {
+        console.log()
+        this.mensagemErro = "Informe um CEP existente, sem pontos nem traços."
+      document.getElementById("btnModal").click();
+      }
+      );
+
   }
 
   public finalizarPedido(){
