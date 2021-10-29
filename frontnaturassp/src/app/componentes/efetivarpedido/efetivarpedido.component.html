@@ -35,7 +35,7 @@
             <div class="col-12">
                 <div class="alert alert-primary fade show" role="alert">
                     <strong>Bem vinda(o)!</strong> Você é recente por aqui!
-                    <button type="button" class="btn-close" (click)="ocultaAlert()" aria-label="Close"></button>
+                    <button type="button" class="btn-close" (click)="ocultaAlert()"></button>
                 </div>
             </div>
         </div>
@@ -47,37 +47,64 @@
             <label for="txtEmail" class="form-label">Seu E-mail</label>
             <input type="text" class="form-control" id="txtEmail" [(ngModel)]="cliente.email">
         </div>
-        <div class="mb-3">
-            <label for="txtTelefone" class="form-label">Seu WhatsApp</label>
-            <input type="text" class="form-control" id="txtTelefone" [(ngModel)]="cliente.telefone">
-        </div>
-        <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10 col-xl-10">
-                <div class="mb-3">
-                    <label for="txtCep" class="form-label">CEP da sua residência</label>
-                    <input type="text" class="form-control" id="txtCep" [(ngModel)]="cliente.cep">
+        <div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="mb-3">
+                        <label for="txtTelefone" class="form-label">Seu WhatsApp</label>
+                        <input type="text" class="form-control" id="txtTelefone" [(ngModel)]="cliente.telefone">
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <button type="button" id="btnCep" (click)="buscarCep()" class="btn btn-primary">Buscar CEP</button>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="mb-3">
+                        <label for="txtDataNasc" class="form-label">Seu Aniversário</label>
+                        <input type="date" class="form-control" id="txtDataNasc" [(ngModel)]="cliente.dataNasc">
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="mb-3">
-            <label for="txtLogradouro" class="form-label">Logradouro</label>
-            <input type="text" class="form-control" id="txtLogradouro" [(ngModel)]="cliente.logradouro">
+        <div class="row mb-3" id="divPergunta" *ngIf="exibirPerguntaEndereco">
+            <div class="col-12 mb-3">
+                <h4>Seu endereço {{ msgEndereco }} continua o mesmo?</h4>
+            </div>
+            <div class="col-6 text-center">
+                <button type="button" class="btn btn-primary" (click)="ocultarForm()">Sim</button>
+            </div>
+            <div class="col-6 text-center">
+                <button type="button" class="btn btn-primary" (click)="exibirForm()">Não</button>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="txtNumero" class="form-label">Número</label>
-                    <input type="text" class="form-control" id="txtNumero" [(ngModel)]="cliente.numero">
+
+        <div *ngIf="exibirFormEndereco">
+            <div class="row">
+                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+                    <div class="mb-3">
+                        <label for="txtCep" class="form-label">CEP da sua residência</label>
+                        <input type="text" class="form-control" id="txtCep" [(ngModel)]="cliente.cep">
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                    <button type="button" id="btnCep" (click)="buscarCep()" class="btn btn-primary">Buscar CEP</button>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="txtComplemento" class="form-label">Complemento</label>
-                    <input type="text" class="form-control" id="txtComplemento" [(ngModel)]="cliente.complemento">
+
+            <div class="mb-3">
+                <label for="txtLogradouro" class="form-label">Logradouro</label>
+                <input type="text" class="form-control" id="txtLogradouro" [(ngModel)]="cliente.logradouro">
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="txtNumero" class="form-label">Número</label>
+                        <input type="text" class="form-control" id="txtNumero" [(ngModel)]="cliente.numero">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="txtComplemento" class="form-label">Complemento</label>
+                        <input type="text" class="form-control" id="txtComplemento" [(ngModel)]="cliente.complemento">
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -99,19 +126,22 @@
                         <input type="text" class="form-control" id="txtEstado" [(ngModel)]="cliente.estado">
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="txtObservacao" class="form-label">Observações do seu pedido</label>
-                    <input type="text" class="form-control" [(ngModel)]="pedido.observacoes" id="txtObservacao" placeholder="Informe se você tem preferência de horário ou alguma outra restrição na entrega.">
-                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <button type="button" id="btnFinalizar" class="btn btn-primary" (click)="finalizarPedido()">Finalizar Pedido</button>
-                    </div>
-                </div>
+        </div> 
+               
+    
+        <div class="mb-3">
+            <label for="txtObservacao" class="form-label">Observações do seu pedido</label>
+            <input type="text" class="form-control" [(ngModel)]="pedido.observacoes" id="txtObservacao" placeholder="Informe se você tem preferência de horário ou alguma outra restrição na entrega.">
+        </div>
 
+        <div class="row" *ngIf = "!exibirPerguntaEndereco">
+            <div class="col-12 text-center">
+                <button type="button" id="btnFinalizar" class="btn btn-primary" (click)="finalizarPedido()">Finalizar Pedido</button>
             </div>
         </div>
-    </div>
+        
+    
 </div>
 

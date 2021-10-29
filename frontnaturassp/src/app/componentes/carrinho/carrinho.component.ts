@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pedido } from 'src/app/model/Pedido';
+import { CarrinhoService } from 'src/app/servicos/carrinho.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -11,9 +12,13 @@ export class CarrinhoComponent implements OnInit {
 
   public pedido: Pedido;
   public vazio: boolean;
-  constructor(private route: Router) {
+  constructor(private route: Router, private carService: CarrinhoService) {
     
-   }
+  }
+
+  public continuar(){
+    this.route.navigate(['/'])
+  }
 
   ngOnInit(): void {
     this.pedido = JSON.parse(localStorage.getItem("LeetirCarrinho"));
@@ -36,6 +41,7 @@ export class CarrinhoComponent implements OnInit {
       }
     }
     localStorage.setItem("LeetirCarrinho", JSON.stringify(this.pedido));
+    this.carService.getNumberOfItens().next(this.pedido.itensPedido.length);
   }  
 
   public efetivar(){

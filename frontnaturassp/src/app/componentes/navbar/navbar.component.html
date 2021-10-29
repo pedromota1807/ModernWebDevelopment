@@ -16,7 +16,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li *ngFor="let CAT of lista">
-                <a class="dropdown-item" href="#">{{ CAT.nome }}</a>
+                <a class="dropdown-item" [routerLink]="['/categoria/',CAT.id]">{{ CAT.nome }}</a>
               </li>
             </ul>
           </li>
@@ -24,10 +24,11 @@
             <a class="nav-link" [routerLink]="'carrinho'"><i class="fas fa-shopping-cart fa-2x"></i> <span class="badge bg-danger" *ngIf="numItens> 0">{{numItens}}</span> </a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Procure seu produto" aria-label="Search">
-          <button class="btn"><i class="fas fa-search fa-2x"></i></button>
-        </form>
+        <div class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Procure seu produto" [(ngModel)]="keyword"
+                    aria-label="Search">
+          <button class="btn" (click)="buscar()"><i class="fas fa-search fa-2x"></i></button>
+        </div>
 
       </div>
     </div>

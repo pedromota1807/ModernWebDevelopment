@@ -1,5 +1,7 @@
 package br.com.pedromota.naturassp.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +22,8 @@ public class Cliente {
 	private String email;
 	@Column(name = "telefone_cliente", length = 20, nullable = false, unique = false)
 	private String telefone;
+	@Column(name = "data_nasc")
+	private LocalDate dataNasc;
 	@Column(name = "cpf_cliente", length = 15, nullable = false)
 	private String cpf;
 	@Column(name = "cep_cliente", length = 10, nullable = false)
@@ -60,6 +64,13 @@ public class Cliente {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public LocalDate getDataNasc() {
+		return dataNasc;
+	}
+	public void setDataNasc(LocalDate dataNasc) {
+		this.dataNasc = dataNasc;
 	}
 	
 	public String getCpf() {

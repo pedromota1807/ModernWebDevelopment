@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemPedido } from 'src/app/model/ItemPedido';
 import { Pedido } from 'src/app/model/Pedido';
 import { Produto } from 'src/app/model/Produto';
+import { CarrinhoService } from 'src/app/servicos/carrinho.service';
 import { ProdutoService } from 'src/app/servicos/produto.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class DetalhesComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
               private service: ProdutoService,
+              private carService: CarrinhoService,
               private nav: Router) {
     this.quantidade = 1; 
    }
@@ -58,6 +60,8 @@ export class DetalhesComponent implements OnInit {
 
     
     localStorage.setItem("LeetirCarrinho", JSON.stringify(pedido));
+
+    this.carService.getNumberOfItens().next(pedido.itensPedido.length);
 
     this.nav.navigate(['carrinho']);
 

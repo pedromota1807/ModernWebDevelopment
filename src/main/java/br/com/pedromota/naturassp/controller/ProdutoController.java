@@ -3,6 +3,7 @@ package br.com.pedromota.naturassp.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,6 +69,15 @@ public class ProdutoController {
 			return ResponseEntity.ok(prod);
 		}
 		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping("/produto/busca")
+	public ResponseEntity<ArrayList<Produto>> buscarPorPalavraChave(@RequestParam (name="key") String key){
+		System.out.println("Key = " + key);
+		if(key != null) {
+			return ResponseEntity.ok(service.listarPorPalavraChave(key));
+		}
+		return ResponseEntity.badRequest().build();
 	}
 	
 }

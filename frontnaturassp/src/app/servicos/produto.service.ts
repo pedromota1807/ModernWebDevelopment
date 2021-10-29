@@ -18,4 +18,11 @@ export class ProdutoService {
     return this.http.get("http://localhost:8080/produto/"+idProduto);
   }
 
+  public getProdutosPelaCategoria(idCateg: number){
+    return this.http.get("http://localhost:8080/produto/categoria/"+idCateg);
+  }
+
+  public getProdutosPelaPalavraChave(keyword: string){
+    return this.http.get("http://localhost:8080/produto/busca?key="+keyword);
+  }
 }

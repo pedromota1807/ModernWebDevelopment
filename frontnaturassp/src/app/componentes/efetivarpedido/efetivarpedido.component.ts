@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/model/Cliente';
 import { EnderecoCep } from 'src/app/model/EnderecoCep';
 import { Pedido } from 'src/app/model/Pedido';
 import { BuscarcepService } from 'src/app/servicos/buscarcep.service';
+import { CarrinhoService } from 'src/app/servicos/carrinho.service';
 import { ClienteService } from 'src/app/servicos/cliente.service';
 import { PedidoService } from 'src/app/servicos/pedido.service';
 
@@ -18,19 +19,44 @@ export class EfetivarpedidoComponent implements OnInit {
   public visivel: boolean;
   public pedido: Pedido;
   public mensagemErro: string;
+  public msgEndereco: string;
+  public exibirPerguntaEndereco: boolean;
+  public exibirFormEndereco: boolean;
 
 constructor(private cliService: ClienteService, 
             private pedService: PedidoService,
             private cepService: BuscarcepService,
+            private carService: CarrinhoService,
             private router: Router) { 
     this.cliente = new Cliente();
     this.pedido = new Pedido();
     this.achou = false;
     this.visivel = false;
+    this.msgEndereco = "";
+    this.exibirFormEndereco = false;
+    this.exibirPerguntaEndereco = true;
   }
 
   ngOnInit(): void {
   }
+
+  public exibirForm(){
+    this.exibirPerguntaEndereco = false;
+    this.exibirFormEndereco = true;
+    this.cliente.cep = "";
+    this.cliente.logradouro = "";
+    this.cliente.numero = "";
+    this.cliente.complemento = "";
+    this.cliente.cidade = "";
+    this.cliente.bairro = "";
+    this.cliente.estado = "";
+  }
+
+  public ocultarForm(){
+    this.exibirPerguntaEndereco = false;
+    this.exibirFormEndereco = false;
+  }
+
 
   public isCpfValid(): boolean{
     if(!this.cliente.cpf || this.cliente.cpf.length == 0){
@@ -90,14 +116,25 @@ constructor(private cliService: ClienteService,
       .subscribe((cli: Cliente) =>{
         this.cliente = cli;
         this.achou = true;
+        this.msgEndereco = cli.logradouro.substring(0, 12)+"*********";
         console.log(this.cliente);
         this.visivel=true;
       },
       (err) => {
         if(err.status == 404){
           //deu certo, mas a pesquisa não encontrou o cliente com esse telefone - é novo cliente
+          this.achou = false;
           this.visivel = true;
-          this.cliente.reset();
+          this.cliente.nome = "";
+          this.cliente.bairro = "";
+          this.cliente.cep = "";
+          this.cliente.cidade = "";
+          this.cliente.email = "";
+          this.cliente.telefone = "";
+          this.cliente.estado = "";
+          this.cliente.numero = "";
+          this.cliente.logradouro = "";
+          this.cliente.complemento = "";
         }
         else{
           alert("Erro desconhecido: "+err);
@@ -138,8 +175,9 @@ constructor(private cliService: ClienteService,
 
     this.pedService.inserirNovoPedido(this.pedido).subscribe(
       (res: Pedido) => {
-        alert("Pedido efetivado - número: "+res.idPedido);
+        //alert("Pedido efetivado - número: "+res.idPedido);
         localStorage.removeItem("LeetirCarrinho");
+        this.carService.getNumberOfItens().next(0);
         this.router.navigate(["/recibo/", res.idPedido]);
       },
       (err) => {
