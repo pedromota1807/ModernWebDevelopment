@@ -16,7 +16,7 @@ export class ReciboComponent implements OnInit{
    }
 
   ngOnInit(): void {
-    this.idPedido = this.router.snapshot.params["id"]; 
+    this.idPedido = this.router.snapshot.params["idPedido"]; 
   
     }
     

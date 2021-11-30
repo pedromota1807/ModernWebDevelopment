@@ -16,10 +16,19 @@ public class MyWebApplicationSecurityConfig extends WebSecurityConfigurerAdapter
 		System.out.println("------- Configurando acessos -------");
 		httpSecurity.csrf().disable()
 							.authorizeRequests()
+							//requisições liberadas
+							.antMatchers(HttpMethod.GET, "/categoria").permitAll()
+							.antMatchers(HttpMethod.GET,"/categoria/search").permitAll()
+							.antMatchers(HttpMethod.GET,"/cliente/*").permitAll()
+							.antMatchers(HttpMethod.POST, "/pedido").permitAll()
+							.antMatchers(HttpMethod.GET,"/produto").permitAll()
+							.antMatchers(HttpMethod.GET,"/produto/categoria/*").permitAll()
+							.antMatchers(HttpMethod.GET,"/produto/*").permitAll()
+							.antMatchers(HttpMethod.GET,"/produto/busca").permitAll()
 							.antMatchers(HttpMethod.GET, "/produto").permitAll()
 							.antMatchers(HttpMethod.POST, "/login").permitAll()
-							.anyRequest().permitAll();
-							//.anyRequest().authenticated();
+						
+							.anyRequest().authenticated().and().cors();
 		
 		httpSecurity.addFilterBefore(new TokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

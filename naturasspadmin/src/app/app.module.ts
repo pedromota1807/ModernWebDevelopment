@@ -9,6 +9,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoriasComponent } from './componentes/categorias/categorias.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    CategoriasComponent
   ],
 
   imports: [
