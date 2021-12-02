@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,4 +56,12 @@ public class CategoriaController {
 		}
 		return ResponseEntity.badRequest().build();
 	}
+	
+	@GetMapping("/categoria/{id}")
+	public ResponseEntity<Categoria> recuperarDetalhes (@PathVariable(name="id") int id){
+		Categoria resultado = service.recuperarPorId(id);
+		if(resultado != null) {
+			return ResponseEntity.ok(resultado);
+		}
+		return ResponseEntity.notFound().build();	}
 }

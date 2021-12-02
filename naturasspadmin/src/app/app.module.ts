@@ -10,6 +10,7 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
+import { EditorcategoriaComponent } from './componentes/editorcategoria/editorcategoria.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CategoriasComponent } from './componentes/categorias/categorias.compone
     LoginComponent,
     NavbarComponent,
     DashboardComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    EditorcategoriaComponent
   ],
 
   imports: [

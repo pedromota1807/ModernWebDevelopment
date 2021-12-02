@@ -14,4 +14,6 @@ public interface ICategoriaService {
 	
 	public ArrayList<Categoria> recuperarPorPalavraChave(String palvraChave);
 	
+	public Categoria recuperarPorId (int id);
+	
 }

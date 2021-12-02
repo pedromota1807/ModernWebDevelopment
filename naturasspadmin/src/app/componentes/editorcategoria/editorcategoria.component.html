@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3 class="text-center">Editor de Categorias</h3>
+        </div>
+    </div>
+
+    <div class="row" *ngIf = "mode == 0">
+        <div class="col-12">
+            <p>Inserindo nova categoria</p>
+        </div>
+    </div>
+
+    <div class="row"> 
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="txtNomeCategoria" class="form-label">Nome da Categoria</label>
+                <input type="text" class="form-control" id="txtNome" [(ngModel)] = "categoria.nome">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-primary">Inserir nova Categoria</button>
+        </div>
+    </div>
+</div>

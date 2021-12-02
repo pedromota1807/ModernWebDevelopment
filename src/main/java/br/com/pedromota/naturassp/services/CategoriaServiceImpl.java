@@ -58,5 +58,11 @@ public class CategoriaServiceImpl implements ICategoriaService{
 		}
 		return null;
 	}
+
+	@Override
+	public Categoria recuperarPorId(int id) {
+		// TODO Auto-generated method stub
+		return dao.findById(id).orElse(null);
+	}
 	
 }

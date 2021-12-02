@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-primary"> + Nova Categoria</button>
+            <a class="btn btn-primary" routerLink='/editorcategoria/new'> + Nova Categoria</a>
         </div>
     </div>
 
@@ -20,8 +20,10 @@
         </thead>
         <tbody>
             <!-- aqui vem o loop de categorias-->
-            <th scope="row">...  </th>
-            <td>Nome da Categoria</td>
+            <tr *ngFor = "let ITEM of lista">
+                <th scope="row">{{ITEM.id}} </th>
+                <td><a routerLink= '/editorcategoria/{{ITEM.id}}'>{{ITEM.nome}}</a> </td>
+            </tr>
         </tbody>
     </table>
 
