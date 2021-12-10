@@ -11,6 +11,6 @@ public interface CategoriaDao extends CrudRepository<Categoria, Integer> {
 	//cosultas customizadas
 	//1 - consulta por palavra chave
 	public ArrayList<Categoria> findByNomeContaining(String palavra);
-	 
+	public ArrayList<Categoria> findAllByOrderById();
 	
 }

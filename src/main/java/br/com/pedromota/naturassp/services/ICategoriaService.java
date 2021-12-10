@@ -16,4 +16,6 @@ public interface ICategoriaService {
 	
 	public Categoria recuperarPorId (int id);
 	
+	public ArrayList<Categoria> recuperarTodasOrdenadasPorId(); 
+	
 }

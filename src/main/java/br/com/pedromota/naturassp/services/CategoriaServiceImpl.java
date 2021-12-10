@@ -64,5 +64,11 @@ public class CategoriaServiceImpl implements ICategoriaService{
 		// TODO Auto-generated method stub
 		return dao.findById(id).orElse(null);
 	}
+
+	@Override
+	public ArrayList<Categoria> recuperarTodasOrdenadasPorId() {
+		// TODO Auto-generated method stub
+		return dao.findAllByOrderById();
+	}
 	
 }

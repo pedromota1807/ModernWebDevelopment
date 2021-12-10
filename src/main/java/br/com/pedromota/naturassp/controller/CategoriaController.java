@@ -64,4 +64,9 @@ public class CategoriaController {
 			return ResponseEntity.ok(resultado);
 		}
 		return ResponseEntity.notFound().build();	}
+	
+	@GetMapping("/categoriabyid")
+	public ResponseEntity<ArrayList<Categoria>> recuperarTodasOrdenadasPorId(){
+		return ResponseEntity.ok(service.recuperarTodasOrdenadasPorId());
+	}
 }

@@ -21,7 +21,10 @@ export class CategoriasComponent implements OnInit {
 
     this.service.getAllCategorias().subscribe(
       (res: Categoria[]) => {this.lista = res},
-      (err) => {this.route.navigate(['/']); }
+      (err) => {
+        this.route.navigate(['/']);  
+      }
+
     )
   }
 
