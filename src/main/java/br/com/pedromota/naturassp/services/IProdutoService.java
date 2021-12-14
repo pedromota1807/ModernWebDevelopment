@@ -11,6 +11,7 @@ public interface IProdutoService {
 	public ArrayList<Produto> listarTodos();
 	public ArrayList<Produto> listarDisponiveis();
 	public ArrayList<Produto> listarIndisponiveis();
+	public ArrayList<Produto> listarDestaques();
 	public ArrayList<Produto> listarPorCategoria(Categoria categoria);
 	public ArrayList<Produto> listarPorPalavraChave(String palavraChave);
 	public Produto recuperarPorId(int id);

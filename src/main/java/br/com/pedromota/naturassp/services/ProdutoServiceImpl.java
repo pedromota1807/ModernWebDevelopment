@@ -76,6 +76,12 @@ public class ProdutoServiceImpl implements IProdutoService{
 		// TODO Auto-generated method stub
 		return dao.findByNomeContainingOrDetalheContaining(palavraChave, palavraChave);
 	}
+
+	@Override
+	public ArrayList<Produto> listarDestaques() {
+		// TODO Auto-generated method stub
+		return dao.findAllByDestaque(1);
+	}
 	
 
 }

@@ -11,6 +11,9 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
 import { EditorcategoriaComponent } from './componentes/editorcategoria/editorcategoria.component';
+import { ProdutosComponent } from './componentes/produtos/produtos.component';
+import { EditorprodutosComponent } from './componentes/editorprodutos/editorprodutos.component';
+
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { EditorcategoriaComponent } from './componentes/editorcategoria/editorca
     NavbarComponent,
     DashboardComponent,
     CategoriasComponent,
-    EditorcategoriaComponent
+    EditorcategoriaComponent,
+    ProdutosComponent,
+    EditorprodutosComponent
   ],
 
   imports: [

@@ -52,7 +52,7 @@ public class ProdutoController {
 	
 	@GetMapping("/produto")
 	public ResponseEntity<ArrayList<Produto>> recuperarTodos(){
-		return ResponseEntity.ok(service.listarDisponiveis());
+		return ResponseEntity.ok(service.listarDestaques());
 	}
 	
 	@GetMapping("/produto/categoria/{id}")
@@ -80,4 +80,8 @@ public class ProdutoController {
 		return ResponseEntity.badRequest().build();
 	}
 	
+	@GetMapping("/produto/todos")
+	public ResponseEntity<ArrayList<Produto>> buscarTodos(){
+		return ResponseEntity.ok(service.listarTodos()); 
+	}
 }

@@ -7,6 +7,7 @@ export class Produto{
   public linkFoto: string;
   public preco: number;
   public disponivel: number;
+  public destaque: number;
   public categoria: Categoria;
 
   public constructor(){
@@ -16,6 +17,7 @@ export class Produto{
     this.linkFoto = "";
     this.preco = 0;
     this.disponivel = 0;
+    this.destaque = 0;
     this.categoria = new Categoria();
   }
 }
