@@ -15,11 +15,68 @@
     <div class="row"> 
         <div class="col-12">
             <div class="mb-3">
-                <label for="txtNomeCategoria" class="form-label">Nome da Categoria</label>
-                <input type="text" class="form-control" id="txtNome" >
+                <label for="txtNomeProduto" class="form-label">Nome do Produto</label>
+                <input type="text" class="form-control" id="txtNome" [(ngModel)] = "produto.nome">
             </div>
         </div>
     </div>
+    <div class="row"> 
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="txtDetalhe" class="form-label">Detalhamento</label>
+                <input type="text" class="form-control" id="txtDetalhe" [(ngModel)] = "produto.detalhe">
+            </div>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="txtCategoria" class="form-label">Categoria: </label>
+                <select id="txtCategoria" class="form-control"[(ngModel)] = "produto.categoria.id">
+                    <option *ngFor="let CATEG of listaCategorias" value={{CATEG.id}}>{{ CATEG.nome }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtPreco" class="form-label">Preço</label>
+                <input type="number" class="form-control" id="txtPreco" [(ngModel)] = "produto.preco">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="chkDisponivel" class="form-label">Disponível</label>
+                <div class="form-control text-center">
+                    <input type="checkbox" id="chkDisponivel" [(ngModel)] = "produto.disponivel">
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="chkDestaque" class="form-label">Em destaque</label>
+                <div class="form-control text-center">
+                    <input type="checkbox"  id="chkDestaque" [(ngModel)] = "produto.destaque">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <label for="formFile" class="form-label">Selecione a foto do produto</label>
+        <div class="input-group mb-3">
+            <input class="form-control" type="file" id="formFile" [(ngModel)] = "arquivo">
+            <button type="button" class="btn btn-primary"(click) = "uploadFoto()">Enviar</button>
+        </div>
+    </div>
+
+    <div class="row"  id = "divfoto">
+        <div class="col-12">
+            <img *ngIf = "produto.linkFoto; else foto " src = "produto.linkFoto">
+        </div>
+        <ng-template #foto><h4 class="text-center mt-2">Foto do produto</h4></ng-template>
+    </div>
+    
     
     <div class="row">
         <div class="col-6">
@@ -27,7 +84,7 @@
         </div>
     
         <div class="col-6">
-            <a class="btn btn-primary" >Voltar</a>
+            <a class="btn btn-primary" routerLink = '/produtos' >Voltar</a>
         </div>
     </div>
 </div>
