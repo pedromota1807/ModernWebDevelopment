@@ -22,7 +22,7 @@ public class UploadServiceImpl implements IUploadService{
 			Path path = Paths.get(caminho + File.separator + arquivo.getOriginalFilename());
 			Files.copy(arquivo.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			System.out.println("DEBUG - Arquivo copiado...");
-			return path.toString();
+			return arquivo.getOriginalFilename().toString();
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();

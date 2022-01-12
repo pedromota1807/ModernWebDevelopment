@@ -12,6 +12,22 @@
         </div>
     </div>
 
+    <div class="row">
+        <label for="formFile" class="form-label">Selecione a foto do produto</label>
+        <div class="input-group mb-3">
+            <input class="form-control" type="file" id="formFile" (change)= "selectFile($event)" >
+            <button type="button" class="btn btn-primary" (click) = "uploadFoto()">Enviar</button>
+        </div>
+    </div>
+
+    <div class="row"  id = "divfoto">
+        <div class="col-12">
+            <img *ngIf = "produto.linkFoto; else foto " src = "{{produto.linkFoto}}">
+        </div>
+        <ng-template #foto><h4 class="text-center mt-2">Foto do produto</h4></ng-template>
+    </div>
+    
+
     <div class="row"> 
         <div class="col-12">
             <div class="mb-3">
@@ -61,20 +77,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <label for="formFile" class="form-label">Selecione a foto do produto</label>
-        <div class="input-group mb-3">
-            <input class="form-control" type="file" id="formFile" [(ngModel)] = "arquivo">
-            <button type="button" class="btn btn-primary"(click) = "uploadFoto()">Enviar</button>
-        </div>
-    </div>
-
-    <div class="row"  id = "divfoto">
-        <div class="col-12">
-            <img *ngIf = "produto.linkFoto; else foto " src = "produto.linkFoto">
-        </div>
-        <ng-template #foto><h4 class="text-center mt-2">Foto do produto</h4></ng-template>
     </div>
     
     

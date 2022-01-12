@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Categoria } from 'src/app/model/Categoria';
+import { PathDTO } from 'src/app/model/PathDTO';
 import { Produto } from 'src/app/model/Produto';
 import { CatergoriaService } from 'src/app/servicos/catergoria.service';
 import { ProdutoService } from 'src/app/servicos/produto.service';
@@ -40,15 +41,23 @@ export class EditorprodutosComponent implements OnInit {
   }
 
   public uploadFoto(){
-    var formData: FormData;
-    formData = new FormData();
-    formData.append(this.arquivo.name, this.arquivo);
-    formData.append("string", "simple")
+    const formData = new FormData();
+    formData.append("arquivo", this.arquivo, this.arquivo.name);
+    //formData.append("teste", "String de teste");
+    
+    console.log(formData.get("arquivo"));
 
     this.produtoService.uploadFoto(formData).subscribe(
-      (res) => { console.log(res)}
+      (res: PathDTO) => {
+        this.produto.linkFoto = "images/"+res.pathToFile;
+
+      }
     )
-    
+  }
+
+  public selectFile(event: any){
+    this.arquivo = event.target.files[0];
+    console.log(this.arquivo);
   }
 
 }

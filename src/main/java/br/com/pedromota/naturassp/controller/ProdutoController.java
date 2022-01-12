@@ -3,7 +3,6 @@ package br.com.pedromota.naturassp.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.pedromota.naturassp.dto.PathDto;
 import br.com.pedromota.naturassp.model.Categoria;
 import br.com.pedromota.naturassp.model.Produto;
 import br.com.pedromota.naturassp.services.IProdutoService;
@@ -42,10 +42,12 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/produto/upload")
-	public ResponseEntity<String> uploadFotos(@RequestParam(name = "arquivo") MultipartFile arquivo){
+	public ResponseEntity<PathDto> uploadFotos(@RequestParam(name = "arquivo") MultipartFile arquivo){
 		String path = upload.uploadFile(arquivo);
 		if(path != null) {
-			return ResponseEntity.status(201).body(path);
+			PathDto pathDto = new PathDto();
+			pathDto.setPathToFile(path);
+			return ResponseEntity.status(201).body(pathDto);
 		}
 		return ResponseEntity.badRequest().build();
 	}
