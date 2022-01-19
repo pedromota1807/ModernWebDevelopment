@@ -1,3 +1,3 @@
 export class PathDTO{
-    public pathToFile!: string ;
+    public pathToFile: string = '' ;
 }

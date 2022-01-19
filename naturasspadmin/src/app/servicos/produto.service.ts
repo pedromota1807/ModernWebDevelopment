@@ -23,4 +23,14 @@ export class ProdutoService {
     }
     return this.http.post<PathDTO>("http://localhost:8080/produto/upload", formData, {headers:header});
   }
+
+  public enviarProduto(produto: Produto){
+    let token: string;
+    token = localStorage.getItem("LTRTK") as string;
+
+    let header= {
+      'Authorization': token
+    }
+    return this.http.post<Produto>("http://localhost:8080/produto", produto, {headers: header});
+  }
 }

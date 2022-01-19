@@ -1,7 +1,7 @@
 import { Categoria } from "./Categoria";
 
 export class Produto{
-  public idProduto: number;
+  public idProduto!: number;
   public nome: string;
   public detalhe: string;
   public linkFoto: string;
@@ -11,7 +11,7 @@ export class Produto{
   public categoria: Categoria;
 
   public constructor(){
-    this.idProduto = 0;
+  
     this.nome = "";
     this.detalhe = "";
     this.linkFoto = "";

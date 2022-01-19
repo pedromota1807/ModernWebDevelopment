@@ -18,7 +18,7 @@ public class UploadServiceImpl implements IUploadService{
 			/*copiar o arquivo recebido via requisição para uma pasta definida
 			 *e retornar o caminho dele. Se der erro, retornar NULL. */
 			System.out.println("DEBUG - "+arquivo.getOriginalFilename());
-			String caminho = "C:\\Users\\LENOVO\\Desktop\\workspace modern web development\\naturassp\\naturasspadmin\\src\\images";
+			String caminho = "C:\\Users\\LENOVO\\Desktop\\workspace modern web development\\naturassp\\naturasspadmin\\src\\assets\\images";
 			Path path = Paths.get(caminho + File.separator + arquivo.getOriginalFilename());
 			Files.copy(arquivo.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			System.out.println("DEBUG - Arquivo copiado...");

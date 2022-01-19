@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
-<div class="container">
+
+<div class="container"> 
+    
     <div class="row">
         <div class="col-12 text-center">
             <h3 class="text-center">Editor de Produtos</h3>
@@ -65,7 +67,7 @@
             <div class="mb-3">
                 <label for="chkDisponivel" class="form-label">Disponível</label>
                 <div class="form-control text-center">
-                    <input type="checkbox" id="chkDisponivel" [(ngModel)] = "produto.disponivel">
+                    <input type="checkbox" id="chkDisponivel" [(ngModel)] = "disponivel">
                 </div>
             </div>
         </div>
@@ -73,7 +75,7 @@
             <div class="mb-3">
                 <label for="chkDestaque" class="form-label">Em destaque</label>
                 <div class="form-control text-center">
-                    <input type="checkbox"  id="chkDestaque" [(ngModel)] = "produto.destaque">
+                    <input type="checkbox"  id="chkDestaque" [(ngModel)] = "destaque">
                 </div>
             </div>
         </div>
@@ -82,9 +84,9 @@
     
     <div class="row">
         <div class="col-6">
-            <button class="btn btn-primary" >Atualizar dados</button>
+            <button class="btn btn-primary"(click)="enviarProduto()">Cadastrar</button>
         </div>
-    
+
         <div class="col-6">
             <a class="btn btn-primary" routerLink = '/produtos' >Voltar</a>
         </div>
