@@ -43,9 +43,9 @@ public class ProdutoController {
 	}
 	
 	@PutMapping("/produto/{idProduto}")
-	public ResponseEntity<Produto> atualizarProduto(@RequestBody Produto atual, @PathVariable int idProd){
+	public ResponseEntity<Produto> atualizarProduto(@RequestBody Produto atual, @PathVariable int idProduto){
 		try {
-			if(idProd != atual.getIdProduto()) {
+			if(idProduto != atual.getIdProduto()) {
 				return ResponseEntity.badRequest().build();
 			}
 			Produto res = service.alterarProduto(atual);

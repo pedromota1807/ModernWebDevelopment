@@ -35,7 +35,7 @@ export class ProdutoService {
   }
 
   public recuperarPeloId(idProduto: number){
-    return this.http.get<Produto>("http://localhost:8080/produto"+idProduto);
+    return this.http.get<Produto>("http://localhost:8080/produto/"+idProduto);
   }
 
   public atualizarProduto(produto: Produto){
