@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
+                <th scope="col">Foto</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Categoria</th>
@@ -26,6 +27,7 @@
             <!-- aqui vem o loop de categorias-->
             <tr *ngFor = "let ITEM of lista">
                 <th scope="row">{{ITEM.idProduto}} </th>
+                <td><img src = "{{ITEM.linkFoto}}" height="35px"> </td>
                 <td><a routerLink= '/editorprodutos/{{ITEM.idProduto}}'>{{ITEM.nome}}</a> </td>
                 <td>R$ {{ITEM.preco}}</td>
                 <td>{{ITEM.categoria.nome}}</td>

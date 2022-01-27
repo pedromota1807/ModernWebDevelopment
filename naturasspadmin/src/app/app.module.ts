@@ -13,6 +13,10 @@ import { CategoriasComponent } from './componentes/categorias/categorias.compone
 import { EditorcategoriaComponent } from './componentes/editorcategoria/editorcategoria.component';
 import { ProdutosComponent } from './componentes/produtos/produtos.component';
 import { EditorprodutosComponent } from './componentes/editorprodutos/editorprodutos.component';
+import { PedidosComponent } from './componentes/pedidos/pedidos.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { RelatoriosComponent } from './componentes/relatorios/relatorios.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 
 
 
@@ -25,7 +29,11 @@ import { EditorprodutosComponent } from './componentes/editorprodutos/editorprod
     CategoriasComponent,
     EditorcategoriaComponent,
     ProdutosComponent,
-    EditorprodutosComponent
+    EditorprodutosComponent,
+    PedidosComponent,
+    ClientesComponent,
+    RelatoriosComponent,
+    UsuariosComponent
   ],
 
   imports: [
