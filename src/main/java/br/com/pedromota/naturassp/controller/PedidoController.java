@@ -1,11 +1,13 @@
 package br.com.pedromota.naturassp.controller;
 
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,4 +50,10 @@ public class PedidoController {
 			return ResponseEntity.status(400).build();
 		}
 	}
+	
+	@GetMapping("/pedido")
+	public ResponseEntity<ArrayList<Pedido>> recuperarTodos(){
+		return ResponseEntity.ok(service.buscarTodos());
+	}
+	
 }

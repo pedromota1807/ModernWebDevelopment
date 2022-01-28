@@ -1,5 +1,8 @@
 package br.com.pedromota.naturassp.services;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +28,7 @@ public class PedidoServiceImpl implements IPedidoService{
 			for(ItemPedido item: novo.getItensPedido()) {
 				item.setPedido(novo);
 			}
+			novo.setStatus(Pedido.NOVO_PEDIDO);
 			novo.setValorTotal(total);
 			dao.save(novo);
 			return novo;
@@ -33,6 +37,36 @@ public class PedidoServiceImpl implements IPedidoService{
 			return null;
 		}
 		
+	}
+
+	@Override
+	public ArrayList<Pedido> buscarPorStatus(int status) {
+		// TODO Auto-generated method stub
+		return dao.findAllByStatusOrderByDataPedidoDesc(status);
+	}
+
+	@Override
+	public Pedido mudarStatus(Pedido pedido, int novoStatus) {
+		try {
+			pedido.setStatus(novoStatus);
+			dao.save(pedido);
+			return pedido;
+		}
+		catch(Exception ex) {
+			return null;
+		}
+	}
+
+	@Override
+	public ArrayList<Pedido> buscarPorPeriodo(LocalDate inicio, LocalDate fim) {
+		// TODO Auto-generated method stub
+		return dao.findAllByDataPedidoBetween(inicio, fim);
+	}
+
+	@Override
+	public ArrayList<Pedido> buscarTodos() {
+		// TODO Auto-generated method stub
+		return dao.findAllByOrderByDataPedidoDesc();
 	}
 	
 	
