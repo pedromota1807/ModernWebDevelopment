@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pedromota.naturassp.model.Cliente;
@@ -54,6 +56,22 @@ public class PedidoController {
 	@GetMapping("/pedido")
 	public ResponseEntity<ArrayList<Pedido>> recuperarTodos(){
 		return ResponseEntity.ok(service.buscarTodos());
+	}
+	
+	@GetMapping("/pedido/{id}")
+	public ResponseEntity<Pedido> alteraStatus(@PathVariable(name = "id") int id, @RequestParam(name="status") int status){
+		try {
+			Pedido pedido = service.mudarStatus(id, status);
+			if(pedido != null) {
+				return ResponseEntity.ok(pedido);
+			}
+			else {
+				return ResponseEntity.badRequest().build();
+			}
+		}
+		catch(Exception ex){
+			return ResponseEntity.status(500).build();
+		}
 	}
 	
 }

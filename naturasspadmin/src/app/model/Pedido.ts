@@ -3,10 +3,14 @@ import { ItemPedido } from "./ItemPedido";
 
 //aqui fazemos o objeto pedido que funciona como nosso carrinho de compras
 export class Pedido{
-    public idPedido: number;
-    public status: number;
-    public cliente: Cliente;
-    public itensPedido: ItemPedido[];
-    public valorTotal: number;
-    public observacoes: string;
+    public idPedido!: number;
+    public dataPedido!: Date;
+    public status!: number;
+    public cliente!: Cliente;
+    public itensPedido!: ItemPedido[];
+    public valorTotal!: number;
+    public observacoes!: string;
+
+    
+    
 }

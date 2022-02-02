@@ -46,8 +46,9 @@ public class PedidoServiceImpl implements IPedidoService{
 	}
 
 	@Override
-	public Pedido mudarStatus(Pedido pedido, int novoStatus) {
+	public Pedido mudarStatus(int idPedido, int novoStatus) {
 		try {
+			Pedido pedido = dao.findById(idPedido).get();
 			pedido.setStatus(novoStatus);
 			dao.save(pedido);
 			return pedido;
