@@ -22,8 +22,13 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public alterarStatus(idPedido: number, status: number){
-    console.log("Clicou: "+idPedido+" / "+status);
+  public alterarStatus(pedido: Pedido, status: number){
+    this.service.alterarStatus(pedido, status).subscribe(
+      (res: Pedido) => {alert("Status do pedido alterado.");
+      pedido.status = status;
+      },
+      (err) => {alert("Erro ao alterar status do Pedido.")}
+    )
   }
 
 }
