@@ -12,5 +12,4 @@ export class Pedido{
     public observacoes!: string;
 
     
-    
 }

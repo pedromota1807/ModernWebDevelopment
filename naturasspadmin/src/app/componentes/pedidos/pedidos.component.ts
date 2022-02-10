@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from 'src/app/model/Cliente';
 import { Pedido } from 'src/app/model/Pedido';
 import { PedidoService } from 'src/app/servicos/pedido.service';
 
@@ -10,9 +11,11 @@ import { PedidoService } from 'src/app/servicos/pedido.service';
 export class PedidosComponent implements OnInit {
 
   public lista: Pedido[] = [];
+  public detalhe: Pedido = new Pedido();
   
 
   constructor(private service: PedidoService) { 
+    this.detalhe.cliente = new Cliente();
     this.service.getAllPedidos().subscribe(
       (res: Pedido[]) => { this.lista = res},
       (erro) => {alert("Erro ao recuperar pedidos.")}
@@ -29,6 +32,11 @@ export class PedidosComponent implements OnInit {
       },
       (err) => {alert("Erro ao alterar status do Pedido.")}
     )
+  }
+
+  public enviarDetalhes(pedido: Pedido){
+    this.detalhe = pedido;
+    document.getElementById("btnModal")?.click();
   }
 
 }

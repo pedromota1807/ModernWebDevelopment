@@ -15,7 +15,6 @@ export class Cliente{
     public cidade!: string;
     public estado!: string;
 
-
     public reset(): void{
         this.nome = "";
         this.bairro = "";
@@ -28,5 +27,6 @@ export class Cliente{
         this.bairro = "";
         this.logradouro = "";
     }
+    
 
 }
