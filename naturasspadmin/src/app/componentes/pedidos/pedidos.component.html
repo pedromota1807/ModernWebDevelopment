@@ -2,25 +2,41 @@
 
 <!--modal do pedido-->
 
-<div class="modal fade modal-dialog-scrollable" id="detalheModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="detalheModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Detalhe do Pedido</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Detalhe do Pedido {{detalhe.idPedido}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <h6>{{detalhe.cliente.nome}}</h6>
-            <hr>
+            <strong>Total: </strong>{{detalhe.valorTotal | currency: 'BRL'}}<br>
             <p><strong>Endereço: </strong>{{detalhe.cliente.logradouro}}, {{detalhe.cliente.numero}}<br>
                 {{detalhe.cliente.bairro}} - {{detalhe.cliente.cidade}} / {{detalhe.cliente.estado}} -
                 {{detalhe.cliente.cep}} 
             </p>
+            <p><strong>Observações:</strong><br>{{detalhe.observacoes}}</p>
             <hr>
             <h6>Itens</h6>
-            <p *ngFor="let item of detalhe.itensPedido">
-                {{item.produto.nome}} - {{item.qtdeItem}} - {{item.precoUnitario | currency: 'BRL'}}
-            </p>
+            <table class="table">
+                <thead>
+                    <th class="col">Foto</th>
+                    <th class="col">Produto</th>
+                    <th class="col">Valor Unit</th>
+                    <th class="col">Qtde</th>
+                    <th class="col">Valor Total</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of detalhe.itensPedido">
+                        <td><img src="{{item.produto.linkFoto}}" height="50"></td> 
+                        <td>{{item.produto.nome}}</td>
+                        <td>{{item.precoUnitario | currency: 'BRL'}}</td>
+                        <td>{{item.qtdeItem}}</td>
+                        <td>{{item.precoTotal | currency: 'BRL'}} </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -45,7 +61,6 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Detalhes</th>
                 <th scope="col">Data</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Valor Total</th>
@@ -55,8 +70,7 @@
         </thead>
         <tbody>
             <tr *ngFor = "let ITEM of lista">
-                <td>{{ITEM.idPedido}}</td>
-                <td><i class="fas fa-info-circle" (click)="enviarDetalhes(ITEM)"></i></td>
+                <td>{{ITEM.idPedido}} <br><i class="fas fa-info-circle" (click)="enviarDetalhes(ITEM)"></i></td>
                 <td>{{ITEM.dataPedido | date: 'dd/MM/yyyy'}} </td>
                 <td>{{ITEM.cliente.nome}} </td>
                 <td><strong>R$ {{ITEM.valorTotal | number: '1.2-2'}}</strong> </td>
