@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { EditorcategoriaComponent } from './componentes/editorcategoria/editorcategoria.component';
 import { EditorprodutosComponent } from './componentes/editorprodutos/editorprodutos.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: "editorcategoria/:id", component: EditorcategoriaComponent},
   {path: "editorprodutos/:id", component: EditorprodutosComponent},
   {path: "produtos", component: ProdutosComponent},
-  {path: "pedidos", component: PedidosComponent}
+  {path: "pedidos", component: PedidosComponent},
+  {path: "clientes", component: ClientesComponent}
 
 ];
 

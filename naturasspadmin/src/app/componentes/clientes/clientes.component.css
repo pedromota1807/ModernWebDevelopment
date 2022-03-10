@@ -1,0 +1,12 @@
+thead{
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+th{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: grey;
+}

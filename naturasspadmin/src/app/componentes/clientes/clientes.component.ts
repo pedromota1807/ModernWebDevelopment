@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor() { }
+  public listaLetras!: string[];
+  public keyword!: string;
+
+  constructor() { 
+    let letra = "A";
+    this.listaLetras = [];
+    for(let i=0; i<26; i++){
+      letra = String.fromCharCode(65+i);
+      this.listaLetras.push(letra);
+    }
+  }
 
   ngOnInit(): void {
   }

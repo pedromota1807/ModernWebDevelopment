@@ -1,1 +1,28 @@
-<p>clientes works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3> Relatório de Clientes </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <th *ngFor = "let LETRA of listaLetras"> 
+                        <a class="nav-link" routerLink="/clientes/{{LETRA}}">{{ LETRA }}</a> </th>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <input type="text" id="txtKeyword" [(ngModel)]="keyword" class="form-control" placeholder="Digite o nome para a busca">
+        </div>
+        <div class="col-6">
+            <button type="button" id="btnBusca" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+
+
+</div>
