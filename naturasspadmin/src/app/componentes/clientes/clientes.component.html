@@ -9,8 +9,11 @@
         <div class="col-12">
             <table class="table">
                 <thead>
-                    <th *ngFor = "let LETRA of listaLetras"> 
-                        <a class="nav-link" routerLink="/clientes/{{LETRA}}">{{ LETRA }}</a> </th>
+                    <tr>
+                        <th *ngFor = "let LETRA of listaLetras"> 
+                            <a class="nav-link" [routerLink]="['/clientes']" [queryParams]="{letra:LETRA}">{{ LETRA }}</a> 
+                        </th>
+                    </tr>
                 </thead>
             </table>
         </div>
@@ -23,6 +26,26 @@
             <button type="button" id="btnBusca" class="btn btn-primary">Buscar</button>
         </div>
     </div>
-
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Nome</th>
+                <th class="col">Data Nasc</th>
+                <th class="col">WhatsApp</th>
+                <th class="col">E-mail</th>
+                <th class="col">Endereço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let CLI of lista">
+                <td>{{CLI.nome}}</td>
+                <td>{{CLI.dataNasc}}</td>
+                <td>{{CLI.telefone}}</td>
+                <td>{{CLI.email}}</td>
+                <td>{{CLI.email}}</td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>
