@@ -5,29 +5,36 @@
             <h3> Relatório de Clientes </h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th *ngFor = "let LETRA of listaLetras"> 
-                            <a class="nav-link" [routerLink]="['/clientes']" [queryParams]="{letra:LETRA}">{{ LETRA }}</a> 
-                        </th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <input type="text" id="txtKeyword" [(ngModel)]="keyword" class="form-control" placeholder="Digite o nome para a busca">
-        </div>
-        <div class="col-6">
-            <button type="button" id="btnBusca" class="btn btn-primary">Buscar</button>
-        </div>
-    </div>
-    
+</div>
+
+<div class="container-fluid">
     <table class="table">
+        <thead>
+            <tr>
+                <th class="col">
+                    <a [routerLink]="['/clientes']">TODOS</a>
+                </th>
+                <th *ngFor="let LETRA of listaLetras">
+                    <a [routerLink]="['/clientes']" [queryParams]="{letra:LETRA}">{{ LETRA }}</a>
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+
+    <div class="row">
+        <div class="col-6">
+            <input type="text" id="txtKeyword" [(ngModel)]="keyword" class="form-control"
+                placeholder="Digite o nome para a busca">
+        </div>
+        <div class="col-6">
+            <button type="button" id="btnBusca" class="btn btn-primary"
+                (click)="buscarPorPalavraChave()">Buscar</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th class="col">Nome</th>
@@ -39,13 +46,15 @@
         </thead>
         <tbody>
             <tr *ngFor="let CLI of lista">
-                <td>{{CLI.nome}}</td>
-                <td>{{CLI.dataNasc}}</td>
+                <td><span *ngIf="isBirthday(CLI.dataNasc)"><i class="fas fa-birthday-cake fa-2x"></i></span> {{ CLI.nome }}</td>
+                <td>{{CLI.dataNasc | date: 'dd/MM/yyyy'}}</td>
                 <td>{{CLI.telefone}}</td>
                 <td>{{CLI.email}}</td>
-                <td>{{CLI.email}}</td>
+                <td>{{CLI.logradouro}} - {{CLI.numero}} <br>
+                    {{CLI.complemento}} <br>
+                    {{CLI.bairro}} - {{CLI.cidade}} - {{CLI.estado}}<br>
+                    {{CLI.cep}} </td>
             </tr>
         </tbody>
     </table>
-
 </div>

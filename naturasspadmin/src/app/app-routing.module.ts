@@ -8,6 +8,8 @@ import { EditorprodutosComponent } from './componentes/editorprodutos/editorprod
 import { LoginComponent } from './componentes/login/login.component';
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 import { ProdutosComponent } from './componentes/produtos/produtos.component';
+import { RelatoriosComponent } from './componentes/relatorios/relatorios.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: "editorprodutos/:id", component: EditorprodutosComponent},
   {path: "produtos", component: ProdutosComponent},
   {path: "pedidos", component: PedidosComponent},
-  {path: "clientes", component: ClientesComponent}
+  {path: "clientes", component: ClientesComponent},
+  {path: "relatorios", component: RelatoriosComponent},
+  {path: "usuarios", component: UsuariosComponent}
 
 ];
 
