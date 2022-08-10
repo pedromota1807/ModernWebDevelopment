@@ -22,7 +22,15 @@ public class Usuario {
 	private String senha;
 	@Column(name = "nome_usuario", length = 50, nullable = false)
 	private String nome;
+	@Column(name = "usuario_ativo")
+	private int ativo;
 	
+	public int getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(int ativo) {
+		this.ativo = ativo;
+	}
 	public int getId() {
 		return id;
 	}
