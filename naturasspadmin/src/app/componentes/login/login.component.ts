@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("LTRTK", res.token); 
         this.router.navigate(['/dashboard']);
       },
-      (err) => {console.log("Deu ruim no login")}
+      (err: any) => {
+       document.getElementById("btnModal")?.click() }
     )
   }
     

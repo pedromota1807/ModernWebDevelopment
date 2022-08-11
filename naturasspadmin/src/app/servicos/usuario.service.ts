@@ -24,6 +24,6 @@ export class UsuarioService {
     let header= {
       'Authorization': token
     }
-    return this.http.put<Usuario>("http://localhost:8080/usuario"+usuario.id, usuario, {headers: header});
+    return this.http.put<Usuario>("http://localhost:8080/usuario/"+usuario.id, usuario, {headers: header});
   }
 }

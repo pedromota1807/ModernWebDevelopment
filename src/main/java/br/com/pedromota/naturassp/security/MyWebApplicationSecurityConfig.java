@@ -27,6 +27,7 @@ public class MyWebApplicationSecurityConfig extends WebSecurityConfigurerAdapter
 							.antMatchers(HttpMethod.GET,"/produto/busca").permitAll()
 							.antMatchers(HttpMethod.GET, "/produto").permitAll()
 							.antMatchers(HttpMethod.POST, "/login").permitAll()
+							.antMatchers(HttpMethod.PUT, "/usuario").permitAll()
 						
 							.anyRequest().authenticated().and().cors();
 		
