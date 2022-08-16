@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/model/Usuario';
 
 @Component({
   selector: 'app-editorusuario',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorusuarioComponent implements OnInit {
 
-  constructor() { }
+  public senhasIguais = true;
+  public usuario: Usuario;
+  public senha!: String;
+
+  constructor() { 
+    this.usuario = new Usuario();
+  }
 
   ngOnInit(): void {
   }
+public sugereUsername(){
+
+}
+
+public confereSenha(){
+  if(this.senha === this.usuario.senha){
+    this.senhasIguais = true;
+  }
+  else{
+    this.senhasIguais = false;
+  }
+}
+
+public atualizarUsuario(){
+  
+}
+
 
 }

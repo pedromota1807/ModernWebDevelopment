@@ -5,4 +5,42 @@
             <h3>Editar Usuário</h3>
         </div>
     </div>
+    <div class="mb-3">
+        <label for="txtNome" class="form-label">Nome Completo</label>
+        <input type="text" class="form-control" id="txtNome" [(ngModel)]="usuario.nome" maxlength="50">
+    </div>
+    <div class="mb-3">
+        <label for="txtEmail" class="form-label">E-mail</label>
+        <input type="text" class="form-control" id="txtEmail" [(ngModel)]="usuario.email" maxlength="50" (change)="sugereUsername()">
+    </div>
+    <div class="mb-3">
+        <label for="txtUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="txtUsername" [(ngModel)]="usuario.username" maxlength="50">
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="mb-3">
+                <label for="txtSenha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="txtSenha" [(ngModel)]="usuario.senha" maxlength="50">
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="mb-3">
+                <label for="txtReSenha" class="form-label">Confirme a senha</label>
+                <input type="password" class="form-control" id="txtReSenha" maxlength="50" (keyup)="confereSenha()" [(ngModel)]="senha" >
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4 *ngIf="!senhasIguais" style="color: red;">Senhas não conferem</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-primary" (click) = "atualizarUsuario()">Atualiza Dados</button>
+        </div>
+    </div>
+
 </div>
