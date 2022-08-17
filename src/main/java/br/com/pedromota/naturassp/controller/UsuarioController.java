@@ -47,7 +47,7 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> adicionarNovo(@RequestBody Usuario usuario){
 		Usuario res = service.adicionarNovo(usuario);
 		if(res != null) {
-			return ResponseEntity.status(201).body(res);
+			return ResponseEntity.status(200).body(res);
 		}
 		return ResponseEntity.badRequest().build();	
 	}
@@ -62,6 +62,16 @@ public class UsuarioController {
 		else {
 			return ResponseEntity.badRequest().build();
 		}
-		
+	}
+	
+	@GetMapping("/usuario/{id}")
+	public ResponseEntity<Usuario> recuperarPeloId(@PathVariable int id){
+		Usuario res = service.recuperarPeloId(id);
+		if(res != null) {
+			return ResponseEntity.ok(res);
+		}
+		else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }

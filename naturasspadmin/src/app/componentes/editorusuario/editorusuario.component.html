@@ -11,7 +11,7 @@
     </div>
     <div class="mb-3">
         <label for="txtEmail" class="form-label">E-mail</label>
-        <input type="text" class="form-control" id="txtEmail" [(ngModel)]="usuario.email" maxlength="50" (change)="sugereUsername()">
+        <input type="text" class="form-control" id="txtEmail" [(ngModel)]="usuario.email" maxlength="50" (keyup)="sugereUsername()">
     </div>
     <div class="mb-3">
         <label for="txtUsername" class="form-label">Username</label>
@@ -42,5 +42,27 @@
             <button class="btn btn-primary" (click) = "atualizarUsuario()">Atualiza Dados</button>
         </div>
     </div>
-
 </div>
+
+<!-- Button trigger modal -->
+<button id="btnModal" style="visibility: hidden;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    ...
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Resultado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {{ msgResultado }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="voltarOuFicar()">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>

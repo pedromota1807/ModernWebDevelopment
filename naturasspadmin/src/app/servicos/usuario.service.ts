@@ -26,4 +26,22 @@ export class UsuarioService {
     }
     return this.http.put<Usuario>("http://localhost:8080/usuario/"+usuario.id, usuario, {headers: header});
   }
+
+  public adicionarNovoUsuário(usuario: Usuario){
+    let token: string;
+    token = localStorage.getItem("LTRTK") as string;
+    let header= {
+      'Authorization': token
+    }
+    return this.http.post<Usuario>("http://localhost:8080/usuario/", usuario, {headers: header});
+  }
+
+  public recuperarPeloId(id: number){
+    let token: string;
+    token = localStorage.getItem("LTRTK") as string;
+    let header= {
+      'Authorization': token
+    }
+    return this.http.get<Usuario>("http://localhost:8080/usuario/" + id, {headers: header});
+  }
 }

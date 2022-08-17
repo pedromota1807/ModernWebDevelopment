@@ -39,6 +39,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 			novo.setAtivo(1);
 			try {
 				dao.save(novo);
+				return novo;
 			}
 			catch(Exception ex) {
 				ex.printStackTrace();
@@ -59,6 +60,12 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		catch(Exception ex) {
 			return null;
 		}
+	}
+
+	@Override
+	public Usuario recuperarPeloId(int id) {
+		// TODO Auto-generated method stub
+		return dao.findById(id).orElse(null);
 	}
 	
 	
