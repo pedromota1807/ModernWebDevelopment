@@ -2,11 +2,13 @@ package br.com.pedromota.naturassp.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.pedromota.naturassp.dao.PedidoDao;
+import br.com.pedromota.naturassp.dto.VendasPorDataDTO;
 import br.com.pedromota.naturassp.model.ItemPedido;
 import br.com.pedromota.naturassp.model.Pedido;
 
@@ -68,6 +70,12 @@ public class PedidoServiceImpl implements IPedidoService{
 	public ArrayList<Pedido> buscarTodos() {
 		// TODO Auto-generated method stub
 		return dao.findAllByOrderByDataPedidoDesc();
+	}
+
+	@Override
+	public List<VendasPorDataDTO> recuperarTotaisUltimaSemana() {
+		// TODO Auto-generated method stub
+		return dao.recuperarVendasPorData();
 	}
 	
 	
