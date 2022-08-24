@@ -18,6 +18,7 @@ import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { RelatoriosComponent } from './componentes/relatorios/relatorios.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { EditorusuarioComponent } from './componentes/editorusuario/editorusuario.component';
+import { GraficovendasComponent } from './componentes/graficovendas/graficovendas.component';
 
 
 
@@ -35,7 +36,8 @@ import { EditorusuarioComponent } from './componentes/editorusuario/editorusuari
     ClientesComponent,
     RelatoriosComponent,
     UsuarioComponent,
-    EditorusuarioComponent
+    EditorusuarioComponent,
+    GraficovendasComponent
   ],
 
   imports: [

@@ -75,7 +75,12 @@ public class PedidoServiceImpl implements IPedidoService{
 	@Override
 	public List<VendasPorDataDTO> recuperarTotaisUltimaSemana() {
 		// TODO Auto-generated method stub
-		return dao.recuperarVendasPorData();
+		ArrayList<VendasPorDataDTO> lista = new ArrayList<VendasPorDataDTO>();
+		for(Object[] values: dao.recuperarVendasPorData()) {
+			lista.add(new VendasPorDataDTO(Double.parseDouble(values[0].toString()), 
+										   LocalDate.parse(values[1].toString())));
+		}
+		return lista;
 	}
 	
 	

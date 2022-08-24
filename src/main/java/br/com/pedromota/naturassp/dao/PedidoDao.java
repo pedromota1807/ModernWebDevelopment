@@ -19,13 +19,13 @@ public interface PedidoDao extends CrudRepository<Pedido, Integer>{
 	public ArrayList<Pedido> findAllByOrderByDataPedidoDesc();
 	
 	
-	@Query(value="(select sum(valor_total) as total, data_pedido as data "
-			+ "from tbl_pedido "
-			+ "where data_pedido between (date_sub(now(), interval 30 day)) and now() "
-			+ "group by (data_pedido) "
-			+ "order by data_pedido desc ", nativeQuery = true)	
+	@Query(value=" select sum(valor_total) as total, data_pedido as data "
+			+ " from tbl_pedido "
+			+ " where data_pedido between (date_sub(now(), interval 30 day)) and now() "
+			+ " group by (data_pedido) "
+			+ " order by data_pedido desc ", nativeQuery = true)	
 			
-	public List<VendasPorDataDTO> recuperarVendasPorData();
+	public List<Object[]> recuperarVendasPorData();
 	
 	
 
