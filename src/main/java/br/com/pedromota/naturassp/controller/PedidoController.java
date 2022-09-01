@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.pedromota.naturassp.dto.FiltroPedidoDTO;
 import br.com.pedromota.naturassp.dto.VendasPorDataDTO;
 import br.com.pedromota.naturassp.model.Cliente;
 import br.com.pedromota.naturassp.model.Pedido;
@@ -54,9 +55,10 @@ public class PedidoController {
 		}
 	}
 	
-	@GetMapping("/pedido")
-	public ResponseEntity<ArrayList<Pedido>> recuperarTodos(){
-		return ResponseEntity.ok(service.buscarTodos());
+	@PostMapping("/pedido/filtrar")
+	public ResponseEntity<ArrayList<Pedido>> recuperarTodos(@RequestBody FiltroPedidoDTO parametros){
+		System.out.println(parametros);
+		return ResponseEntity.ok(service.filtrarPorVariosCriterios(parametros));
 	}
 	
 	@GetMapping("/pedido/{id}")
@@ -79,5 +81,6 @@ public class PedidoController {
 	public ResponseEntity<ArrayList<VendasPorDataDTO>> recuperarUltimasVendas(){
 		return ResponseEntity.ok((ArrayList<VendasPorDataDTO>)service.recuperarTotaisUltimaSemana());
 	}
+	
 	
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FiltroPedidoDTO } from '../model/filtroPedidoDTO';
 import { Pedido } from '../model/Pedido';
 import { VendasPorDataDTO } from '../model/VendasPorDataDTO';
 
@@ -10,13 +11,13 @@ export class PedidoService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllPedidos(){
+  public getAllPedidos(filtro: FiltroPedidoDTO){
     let token = localStorage.getItem("LTRTK") as string;
 
     let header = {
       'Authorization': token
     }
-    return this.http.get<Pedido[]>("http://localhost:8080/pedido", {headers: header});
+    return this.http.post<Pedido[]>("http://localhost:8080/pedido/filtrar", filtro, {headers: header});
   }
 
   public alterarStatus(pedido: Pedido, status: number){

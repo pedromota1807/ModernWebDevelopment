@@ -17,7 +17,7 @@ export class PedidosComponent implements OnInit {
 
   constructor(private service: PedidoService) { 
     this.detalhe.cliente = new Cliente();
-    this.service.getAllPedidos().subscribe(
+    this.service.getAllPedidos(this.filtroPedido).subscribe(
       (res: Pedido[]) => { this.lista = res},
       (erro) => {alert("Erro ao recuperar pedidos.")}
     );
